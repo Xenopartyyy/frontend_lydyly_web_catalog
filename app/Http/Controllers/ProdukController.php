@@ -2,17 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produk;
-use App\Models\Kategori;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Validation\ValidationException;
-use Intervention\Image\ImageManager;
-use Intervention\Image\Drivers\Gd\Driver;
 use Yajra\DataTables\Facades\DataTables;
-use App\Imports\ProdukImport;
+
 use Illuminate\Support\Facades\Http;   // ✅ untuk API call
 use Illuminate\Support\Facades\Log;
 use Exception;

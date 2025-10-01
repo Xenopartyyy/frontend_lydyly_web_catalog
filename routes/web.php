@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProdukController;
-use App\Http\Controllers\RegisterController;
+// use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\MainDashboardController;
 
 /*
@@ -17,8 +17,8 @@ use App\Http\Controllers\MainDashboardController;
 Route::get('/', [MainController::class, 'index']);
 
 // Register
-Route::get('/hidden-pathway-9348-akun2', [RegisterController::class, 'showRegisterForm'])->name('register.form');
-Route::post('/hidden-pathway-9348-akun2', [RegisterController::class, 'register'])->name('register');
+// Route::get('/hidden-pathway-9348-akun2', [RegisterController::class, 'showRegisterForm'])->name('register.form');
+// Route::post('/hidden-pathway-9348-akun2', [RegisterController::class, 'register'])->name('register');
 
 // Login & Logout
 Route::get('/login/akun/lydyly2', [AuthController::class, 'showLoginForm'])->name('login');
