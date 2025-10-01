@@ -253,7 +253,8 @@
             class="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-br from-pink-300 to-pink-500 rounded-full opacity-20">
         </div> <!-- Logo Section -->
         <div class="flex justify-center mb-8">
-            <div class="relative"> <img src="{{ asset('storage/photos/lyd.png') }}" alt="Lidily Logo"
+            
+            <div class="relative"> <img src="{{ asset('public/storage/photos/lyd.png') }}" alt="Lidily Logo"
                     class="w-32 logo-glow"> <!-- Logo Background Glow -->
                 <div
                     class="absolute inset-0 bg-gradient-to-r from-pink-200 to-pink-300 rounded-full blur-xl opacity-30 -z-10">
@@ -274,12 +275,12 @@
                     class="input-focus w-full px-4 py-3 rounded-xl border-2 border-pink-200 focus:border-pink-500 focus:ring-0 outline-none transition text-sm bg-white/70"
                     placeholder="Masukkan password Anda"> </div> <!-- Error Messages -->
             @if ($errors->any())
-                <div class="mb-6 error-pulse">
-                    <div
-                        class="text-sm font-medium text-pink-700 bg-gradient-to-r from-pink-50 to-rose-50 px-4 py-3 rounded-xl border-l-4 border-pink-400 shadow-sm">
-                        <div class="flex items-center"> <span class="mr-2">⚠️</span> {{ $errors->first() }} </div>
-                    </div>
+            <div class="mb-6 error-pulse">
+                <div
+                    class="text-sm font-medium text-pink-700 bg-gradient-to-r from-pink-50 to-rose-50 px-4 py-3 rounded-xl border-l-4 border-pink-400 shadow-sm">
+                    <div class="flex items-center"> <span class="mr-2">⚠️</span> {{ $errors->first() }} </div>
                 </div>
+            </div>
             @endif
             <!-- Login Button --> <button type="submit" id="loginBtn"
                 class="btn-hover w-full bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white py-3.5 rounded-xl font-semibold transition duration-300 text-sm relative z-10 shadow-lg">

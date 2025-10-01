@@ -81,7 +81,7 @@
             @if (!empty($images))
             @foreach ($images as $index => $foto)
             <div class="flex items-center space-x-4">
-                <img src="http:\\139.168.116.18:8813\storage\{{ $foto }}" alt="Gambar {{ $index + 1 }}"
+                <img src="http:\\139.255.116.18:8813\storage\{{ $foto }}" alt="Gambar {{ $index + 1 }}"
                     class="w-24 h-24 object-cover border rounded-lg"
                     onerror="this.onerror=null; this.src='{{ asset('images/no-image.png') }}'; console.log('Image failed:', '{{ $foto }}')">
                 <input type="hidden" name="existing_images[]" value="{{ $foto }}">
@@ -128,8 +128,6 @@
 </div>
 @push('script')
 <script>
-
-
     $(document).ready(function() {
             
                 function showCustomLoading() {
@@ -144,7 +142,7 @@
                     e.preventDefault();
                
                     const url =
-                        'http://139.168.116.18:8813/api/dashboard/produk/{{ $produk['id'] }}';
+                        'http://139.255.116.18:8813/api/dashboard/produk/{{ $produk['id'] }}';
 
                     console.log('URL yang dipanggil:', url); // Debug URL
 

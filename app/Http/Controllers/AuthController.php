@@ -25,7 +25,7 @@ class AuthController extends Controller
 
         try {
             // Panggil API login (JWT) backend
-            $response = Http::post('http://139.168.116.18:8813/api/login', [
+            $response = Http::post('http://139.255.116.18:8813/api/login', [
                 'name' => $request->name,
                 'password' => $request->password,
             ]);
@@ -61,7 +61,7 @@ class AuthController extends Controller
 
         try {
             $response = Http::withToken($token)
-                ->get('http://139.168.116.18:8813/api/me');
+                ->get('http://139.255.116.18:8813/api/me');
 
             if ($response->successful()) {
                 $user = $response->json();

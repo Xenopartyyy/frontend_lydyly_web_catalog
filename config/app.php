@@ -123,7 +123,7 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
- /*
+    /*
     |--------------------------------------------------------------------------
     | Backend API URL
     |--------------------------------------------------------------------------
@@ -134,7 +134,7 @@ return [
     |
     */
 
-    'backend_api_url' => env('BACKEND_API_URL', 'http://139.168.116.18:8813/api/dashboard'),
-    
+    'backend_api_url' => env('BACKEND_API_URL', 'http://139.255.116.18:8813/api/dashboard'),
+
 
 ];
