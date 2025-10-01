@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Dashboard Lydyly</title>
-  <link rel="icon" type="image/x-icon" href="{{ asset('public/public/favicon/favicon.ico') }}">
+  <link rel="icon" type="image/x-icon" href="{{ asset('public/favicon/favicon.ico') }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,8 +42,8 @@
     }
   </style>
 
-  <script src="{{ asset('public/public/js/jquery-3.7.1.min.js') }}"></script>
-  <script src="{{ asset('public/public/js/datatables.min.js') }}"></script>
+  <script src="{{ asset('public/js/jquery-3.7.1.min.js') }}"></script>
+  <script src="{{ asset('public/js/datatables.min.js') }}"></script>
   <script>
     let token = "{{ session('access_token') }}";
 

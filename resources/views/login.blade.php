@@ -254,7 +254,7 @@
         </div> <!-- Logo Section -->
         <div class="flex justify-center mb-8">
 
-            <div class="relative"> <img src="{{ asset('public/public/storage/photos/lyd.png') }}" alt="Lidily Logo"
+            <div class="relative"> <img src="{{ asset('public/storage/photos/lyd.png') }}" alt="Lidily Logo"
                     class="w-32 logo-glow"> <!-- Logo Background Glow -->
                 <div
                     class="absolute inset-0 bg-gradient-to-r from-pink-200 to-pink-300 rounded-full blur-xl opacity-30 -z-10">
