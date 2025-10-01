@@ -54,9 +54,9 @@
 </div>
 
 <!-- DataTable scripts and styling -->
-<link rel="stylesheet" href={{ asset('css/datatables.min.css') }}>
-<script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
-<script src="{{ asset('js/datatables.min.js') }}"></script>
+<link rel="stylesheet" href={{ asset('public/css/datatables.min.css') }}>
+<script src="{{ asset('public/js/jquery-3.7.1.min.js') }}"></script>
+<script src="{{ asset('public/js/datatables.min.js') }}"></script>
 
 <script>
   $(document).ready(function() {

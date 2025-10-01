@@ -3,7 +3,7 @@
         <!-- Logo -->
         <div class="flex items-center">
             <a href="{{ url('/') }}">
-                <img src="{{ asset('storage/photos/Agree.png') }}" alt="Agree Logo" class="w-15 h-10">
+                <img src="{{ asset('public/storage/photos/Agree.png') }}" alt="Agree Logo" class="w-15 h-10">
             </a>
         </div>
 

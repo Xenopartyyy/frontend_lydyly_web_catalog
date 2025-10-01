@@ -9,14 +9,14 @@
     <div class="bg-white p-8 rounded-lg shadow-lg mb-4 text-gray-800">
         <div class="flex items-center justify-between mb-6">
             <h2 class="text-2xl font-extrabold ">Import Data Produk</h2>
-            <a href="{{ asset('template/Ketentuan_Impor.txt') }}" target="_blank"
+            <a href="{{ asset('public/template/Ketentuan_Impor.txt') }}" target="_blank"
                 class="px-4 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-600 transition duration-300 text-sm">
                 Lihat Ketentuan Import
             </a>
         </div>
 
         <div class="flex items-center justify-end mb-4">
-            <a href="{{ asset('template/Format_Excel_Produk.xlsx') }}"
+            <a href="{{ asset('public/template/Format_Excel_Produk.xlsx') }}"
                 class="px-4 py-3 bg-yellow-400 text-gray-800 font-semibold rounded-lg shadow-md hover:bg-yellow-500 transition duration-300 text-sm">
                 Download Template Import
             </a>

@@ -27,7 +27,7 @@
                                         alt="{{ $produk['NamaStock'] }}"
                                         class="w-full h-96 object-contain cursor-pointer hover:scale-105 transition-transform duration-300"
                                         onclick="openModal('{{ $imageUrl }}')"
-                                        onerror="this.onerror=null; this.src='{{ asset('images/no-image.png') }}'; console.log('Image failed to load:', '{{ $imageUrl }}')">
+                                        onerror="this.onerror=null; this.src='{{ asset('public/images/no-image.png') }}'; console.log('Image failed to load:', '{{ $imageUrl }}')">
                                 </div>
                                 @endforeach
                             </div>
@@ -65,7 +65,7 @@
                             data-index="{{ $index }}" onclick="goToSlide({{ $index }})">
                             <img src="http:\\139.255.116.18:8813\storage\{{ $thumbUrl }}"
                                 alt="Thumbnail {{ $index + 1 }}" class="w-full h-full object-cover"
-                                onerror="this.onerror=null; this.src='{{ asset('images/no-image.png') }}'; console.log('Thumbnail failed to load:', '{{ $thumbUrl }}')">
+                                onerror="this.onerror=null; this.src='{{ asset('public/images/no-image.png') }}'; console.log('Thumbnail failed to load:', '{{ $thumbUrl }}')">
                         </button>
                         @endforeach
                     </div>

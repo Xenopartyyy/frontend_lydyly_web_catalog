@@ -7,14 +7,14 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Dashboard Lydyly</title>
-  <link rel="icon" type="image/x-icon" href="{{ asset('favicon/favicon.ico') }}">
+  <link rel="icon" type="image/x-icon" href="{{ asset('public/public/favicon/favicon.ico') }}">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/ca4cafcf9e.js" crossorigin="anonymous"></script>
   @vite('resources/css/app.css')
-  <link rel="stylesheet" href={{ asset('css/datatables.min.css') }}>
+  <link rel="stylesheet" href={{ asset('public/css/datatables.min.css') }}>
   <!-- Add this to your layout file -->
   @notifyCss
 
@@ -42,8 +42,8 @@
     }
   </style>
 
-  <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
-  <script src="{{ asset('js/datatables.min.js') }}"></script>
+  <script src="{{ asset('public/public/js/jquery-3.7.1.min.js') }}"></script>
+  <script src="{{ asset('public/public/js/datatables.min.js') }}"></script>
   <script>
     let token = "{{ session('access_token') }}";
 

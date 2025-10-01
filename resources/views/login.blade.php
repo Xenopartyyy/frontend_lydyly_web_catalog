@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login - Lidily</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon/favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('public/favicon/favicon.ico') }}">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -253,8 +253,8 @@
             class="absolute -bottom-4 -left-4 w-12 h-12 bg-gradient-to-br from-pink-300 to-pink-500 rounded-full opacity-20">
         </div> <!-- Logo Section -->
         <div class="flex justify-center mb-8">
-            
-            <div class="relative"> <img src="{{ asset('public/storage/photos/lyd.png') }}" alt="Lidily Logo"
+
+            <div class="relative"> <img src="{{ asset('public/public/storage/photos/lyd.png') }}" alt="Lidily Logo"
                     class="w-32 logo-glow"> <!-- Logo Background Glow -->
                 <div
                     class="absolute inset-0 bg-gradient-to-r from-pink-200 to-pink-300 rounded-full blur-xl opacity-30 -z-10">
