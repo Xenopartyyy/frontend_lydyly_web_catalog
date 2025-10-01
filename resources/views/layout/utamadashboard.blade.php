@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://kit.fontawesome.com/ca4cafcf9e.js" crossorigin="anonymous"></script>
   @vite('resources/css/app.css')
   <link rel="stylesheet" href={{ asset('public/css/datatables.min.css') }}>
