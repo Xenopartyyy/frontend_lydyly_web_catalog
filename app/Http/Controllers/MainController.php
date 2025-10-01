@@ -10,7 +10,7 @@ class MainController extends Controller
     public function index()
     {
 
-        return view("beranda");
+        return redirect('/dashboard/lydyly2');
     }
     
     
