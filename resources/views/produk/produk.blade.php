@@ -135,7 +135,7 @@ $userIsAdmin = AuthController::userIsAdmin();
                             data.forEach(url => {
                                 if(url){
                                     url = url.replace(/\\\//g, "/").replace(/\/\//g, "/");
-                                    html += `<img src="http://139.255.116.18:8813/storage/${url}" class="w-10 h-10 object-cover rounded shadow mr-1 mb-1 inline-block cursor-pointer hover:scale-105 transition-transform" onclick="showImageModal('http://139.255.116.18:8813/storage/${url}')">`;
+                                    html += `<img src="https://api.allorigins.win/raw?url=http://139.255.116.18:8813/storage/${url}" class="w-10 h-10 object-cover rounded shadow mr-1 mb-1 inline-block cursor-pointer hover:scale-105 transition-transform" onclick="showImageModal('https://api.allorigins.win/raw?url=http://139.255.116.18:8813/storage/${url}')">`;
                                 }
                             });
                             return html || '-';

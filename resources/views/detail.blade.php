@@ -23,7 +23,7 @@
                                 $imageUrl = $image; // sudah full URL dari API
                                 @endphp
                                 <div class="w-full flex-shrink-0 relative">
-                                    <img src="http:\\139.255.116.18:8813\storage\{{ $imageUrl }}"
+                                    <img src="https://api.allorigins.win/raw?url=http:\\139.255.116.18:8813\storage\{{ $imageUrl }}"
                                         alt="{{ $produk['NamaStock'] }}"
                                         class="w-full h-96 object-contain cursor-pointer hover:scale-105 transition-transform duration-300"
                                         onclick="openModal('{{ $imageUrl }}')"
