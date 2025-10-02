@@ -180,6 +180,60 @@ class ProdukController extends Controller
         }
     }
 
+    // public function update(Request $request, $id)
+    // {
+    //     try {
+    //         $token = Session::get('access_token');
+
+    //         // Debug token dulu - hapus setelah berhasil
+    //         if (!$token) {
+    //             return back()->with('error', 'Token tidak ditemukan di session');
+    //         }
+
+    //         $httpClient = Http::withoutVerifying()->withHeaders([
+    //             'Authorization' => 'Bearer ' . $token,
+    //             'Accept' => 'application/json',
+    //         ])->asMultipart();
+
+    //         // Add deleted images info
+    //         if ($request->has('deleted_images')) {
+    //             foreach ($request->input('deleted_images') as $index => $deletedImage) {
+    //                 $httpClient = $httpClient->attach("deleted_images[{$index}]", $deletedImage);
+    //             }
+    //         }
+
+    //         // Add new image files
+    //         if ($request->hasFile('fotobrg')) {
+    //             foreach ($request->file('fotobrg') as $index => $file) {
+    //                 $httpClient = $httpClient->attach(
+    //                     "fotobrg[{$index}]",
+    //                     file_get_contents($file->getRealPath()),
+    //                     $file->getClientOriginalName()
+    //                 );
+    //             }
+    //         }
+
+    //         // Sebelum $apiResponse = $httpClient->post(...)
+    //         Log::info('Token: ' . $token);
+    //         Log::info('URL: ' . "{$this->apiBaseUrl}/produk/{$id}");
+
+    //         $apiResponse = $httpClient->post("{$this->apiBaseUrl}/produk/{$id}");
+
+    //         if ($apiResponse->successful()) {
+    //             return redirect()->route('produk.index')->with('success', 'Produk berhasil diperbarui');
+    //         } else {
+    //             // Debug response - hapus setelah berhasil
+    //             Log::error('API Error: ' . $apiResponse->body());
+
+    //             $error = $apiResponse->json();
+    //             return back()->withErrors($error['errors'] ?? [])->with('error', $error['message'] ?? 'Gagal memperbarui produk');
+    //         }
+    //     } catch (\Exception $e) {
+    //         Log::error('Error updating produk: ' . $e->getMessage());
+    //         return back()->with('error', 'Terjadi kesalahan saat memperbarui produk');
+    //     }
+    // }
+
     public function update(Request $request, $id)
     {
         try {
@@ -195,10 +249,17 @@ class ProdukController extends Controller
                 'Accept' => 'application/json',
             ])->asMultipart();
 
-            // Add deleted images info
+            // Add deleted images info (sebagai field biasa, bukan file)
             if ($request->has('deleted_images')) {
                 foreach ($request->input('deleted_images') as $index => $deletedImage) {
-                    $httpClient = $httpClient->attach("deleted_images[{$index}]", $deletedImage);
+                    $httpClient = $httpClient->withOptions([
+                        'multipart' => [
+                            [
+                                'name'     => "deleted_images[{$index}]",
+                                'contents' => $deletedImage,
+                            ]
+                        ]
+                    ]);
                 }
             }
 
