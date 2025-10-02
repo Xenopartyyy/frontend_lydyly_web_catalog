@@ -8,6 +8,7 @@ use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Http;   // ✅ untuk API call
 use Illuminate\Support\Facades\Log;
 use Exception;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
 
 
@@ -21,16 +22,52 @@ class ProdukController extends Controller
       
     }
 
+    // public function index(Request $request)
+    // {
+    //     try {
+    //         $apiurl = "{$this->apiBaseUrl}/produk";
+    //         $token = Session::get('access_token');
+
+    //         $response = Http::withHeaders([
+    //             'Authorization' => 'Bearer ' . $token,
+    //             'Accept' => 'application/json',
+    //         ])->get($apiurl);
+    //         if (!$response->successful()) {
+    //             throw new Exception("API Produk tidak bisa diakses");
+    //         }
+
+    //         $result = $response->json();
+    //         if (!$result['success']) {
+    //             throw new Exception($result['message'] ?? "Gagal ambil data dari API Produk");
+    //         }
+
+    //         $produk = collect($result['data']);
+
+    //         if ($request->ajax()) {
+    //             return DataTables::of($produk)->make(true);
+    //         }
+
+    //         return view('produk.produk');
+    //     } catch (Exception $e) {
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => 'Gagal load data produk',
+    //             'error'   => $e->getMessage()
+    //         ], 500);
+    //     }
+    // }
     public function index(Request $request)
     {
         try {
             $apiurl = "{$this->apiBaseUrl}/produk";
             $token = Session::get('access_token');
 
+            // Request ke API backend
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
-                'Accept' => 'application/json',
+                'Accept'        => 'application/json',
             ])->get($apiurl);
+
             if (!$response->successful()) {
                 throw new Exception("API Produk tidak bisa diakses");
             }
@@ -40,18 +77,47 @@ class ProdukController extends Controller
                 throw new Exception($result['message'] ?? "Gagal ambil data dari API Produk");
             }
 
-            $produk = collect($result['data']);
+            // Ambil data produk mentah
+            // $produk = collect($result['data'])->map(function ($row) {
+                // Pastikan array (kalau dari backend masih object)
+                // $row = (array) $row;
 
+                // Konversi harga & stok ke float
+                // $row['HargaBeli']  = isset($row['HargaBeli']) ? (float) $row['HargaBeli'] : 0;
+                // $row['HargaJual5'] = isset($row['HargaJual5']) ? (float) $row['HargaJual5'] : 0;
+                // $row['YUAN']       = isset($row['YUAN']) ? (float) $row['YUAN'] : 0;
+                // $row['StockAkhir'] = isset($row['StockAkhir']) ? (float) $row['StockAkhir'] : 0;
+
+                // Limit deskripsi
+                // $row['deskbrg'] = !empty($row['deskbrg']) ? Str::limit($row['deskbrg'], 50) : '-';
+
+                // Foto barang (decode JSON dari backend)
+                // if (!empty($row['fotobrg'])) {
+                //     $images = json_decode($row['fotobrg'], true);
+                //     if (json_last_error() === JSON_ERROR_NONE && is_array($images)) {
+                //         $row['fotobrg'] = array_map(fn($path) => ltrim(str_replace('\\', '', trim($path)), '/'), $images);
+                //     } else {
+                //         $row['fotobrg'] = [];
+                //     }
+                // } else {
+                //     $row['fotobrg'] = [];
+                // }
+
+            //     return $row;
+            // });
+
+            // Kalau request datang dari DataTables (AJAX)
             if ($request->ajax()) {
-                return DataTables::of($produk)->make(true);
+                return DataTables::of($result['data'])->make(true);
             }
 
+            // Kalau request biasa → return ke view
             return view('produk.produk');
         } catch (Exception $e) {
             return response()->json([
                 'success' => false,
                 'message' => 'Gagal load data produk',
-                'error'   => $e->getMessage()
+                'error'   => $e->getMessage(),
             ], 500);
         }
     }
