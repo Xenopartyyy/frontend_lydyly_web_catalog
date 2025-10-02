@@ -81,8 +81,8 @@
             @if (!empty($images))
             @foreach ($images as $index => $foto)
             <div class="flex items-center space-x-4">
-                <img src="https://api.allorigins.win/raw?url=http:\\139.255.116.18:8813\storage\{{ $foto }}" alt="Gambar {{ $index + 1 }}"
-                    class="w-24 h-24 object-cover border rounded-lg"
+                <img src="https://api.allorigins.win/raw?url=http://139.255.116.18:8813\storage\{{ $foto }}"
+                    alt="Gambar {{ $index + 1 }}" class="w-24 h-24 object-cover border rounded-lg"
                     onerror="this.onerror=null; this.src='{{ asset('public/images/no-image.png') }}'; console.log('Image failed:', '{{ $foto }}')">
                 <input type="hidden" name="existing_images[]" value="{{ $foto }}">
                 <label class="flex items-center space-x-2">
