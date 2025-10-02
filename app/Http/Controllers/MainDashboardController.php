@@ -27,11 +27,11 @@ class MainDashboardController extends Controller
             $data = Cache::remember('dashboard_data', 60, function () use ($apiUrl) {
                 $token = Session::get('access_token');
 
-                $response = Http::withHeaders([
+                $response = Http::withOptions([
+                    'verify'        => false
+                ])->withHeaders([
                     'Authorization' => 'Bearer ' . $token,
                     'Accept' => 'application/json',
-                ])->withOptions([
-                    'verify'        => false
                 ])->get($apiUrl);
 
                 return $response->successful() ? $response->json() : [];

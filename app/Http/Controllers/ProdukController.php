@@ -63,12 +63,12 @@ class ProdukController extends Controller
 
             // Request ke API backend
             if ($request->ajax()) {
-                $response = Http::withHeaders([
+                $response = Http::withOptions([
+                    'verify'        => false
+                ])->withHeaders([
                     'Authorization' => 'Bearer ' . $token,
                     'Accept'        => 'application/json',
 
-                ])->withOptions([
-                    'verify'        => false
                 ])->get($apiurl);
 
                 if (!$response->successful()) {
@@ -132,11 +132,11 @@ class ProdukController extends Controller
             $apiurl = "{$this->apiBaseUrl}/produk/{$id}";
             $token = Session::get('access_token');
 
-            $response = Http::withHeaders([
+            $response = Http::withOptions([
+                'verify'        => false
+            ])->withHeaders([
                 'Authorization' => 'Bearer ' . $token,
                 'Accept' => 'application/json',
-            ])->withOptions([
-                'verify'        => false
             ])->get($apiurl);
 
             if ($response->successful()) {
@@ -162,11 +162,11 @@ class ProdukController extends Controller
             $apiurl = "{$this->apiBaseUrl}/produk/{$id}";
             $token = Session::get('access_token');
 
-            $response = Http::withHeaders([
+            $response = Http::withOptions([
+                'verify'        => false
+            ])->withHeaders([
                 'Authorization' => 'Bearer ' . $token,
                 'Accept' => 'application/json',
-            ])->withOptions([
-                'verify'        => false
             ])->get($apiurl);
 
             if ($response->successful()) {
@@ -196,11 +196,11 @@ class ProdukController extends Controller
                 return back()->with('error', 'Token tidak ditemukan di session');
             }
 
-            $httpClient = Http::withHeaders([
+            $httpClient = Http::withOptions([
+                'verify'        => false
+            ])->withHeaders([
                 'Authorization' => 'Bearer ' . $token,
                 'Accept' => 'application/json',
-            ])->withOptions([
-                'verify'        => false
             ])->asMultipart();
 
             // Add deleted images info
