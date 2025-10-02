@@ -19,7 +19,6 @@ class ProdukController extends Controller
     public function __construct()
     {
         $this->apiBaseUrl = config('app.backend_api_url', 'http://139.255.116.18:8813/api/dashboard');
-      
     }
 
     // public function index(Request $request)
@@ -63,22 +62,23 @@ class ProdukController extends Controller
             $token = Session::get('access_token');
 
             // Request ke API backend
-            $response = Http::withHeaders([
-                'Authorization' => 'Bearer ' . $token,
-                'Accept'        => 'application/json',
-            ])->get($apiurl);
+            if ($request->ajax()) {
+                $response = Http::withHeaders([
+                    'Authorization' => 'Bearer ' . $token,
+                    'Accept'        => 'application/json',
+                ])->get($apiurl);
 
-            if (!$response->successful()) {
-                throw new Exception("API Produk tidak bisa diakses");
-            }
+                if (!$response->successful()) {
+                    throw new Exception("API Produk tidak bisa diakses");
+                }
 
-            $result = $response->json();
-            if (!$result['success']) {
-                throw new Exception($result['message'] ?? "Gagal ambil data dari API Produk");
-            }
+                $result = $response->json();
+                if (!$result['success']) {
+                    throw new Exception($result['message'] ?? "Gagal ambil data dari API Produk");
+                }
 
-            // Ambil data produk mentah
-            // $produk = collect($result['data'])->map(function ($row) {
+                // Ambil data produk mentah
+                // $produk = collect($result['data'])->map(function ($row) {
                 // Pastikan array (kalau dari backend masih object)
                 // $row = (array) $row;
 
@@ -103,11 +103,11 @@ class ProdukController extends Controller
                 //     $row['fotobrg'] = [];
                 // }
 
-            //     return $row;
-            // });
+                //     return $row;
+                // });
 
-            // Kalau request datang dari DataTables (AJAX)
-            if ($request->ajax()) {
+                // Kalau request datang dari DataTables (AJAX)
+
                 return DataTables::of($result['data'])->make(true);
             }
 
