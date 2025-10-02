@@ -15,7 +15,7 @@ class MainDashboardController extends Controller
     {
         $this->apiBaseUrl = config(
             'app.backend_api_url',
-            'http://139.255.116.18:8813/api/dashboard'
+            'https://139.255.116.18:8813/api/dashboard'
         );
     }
 

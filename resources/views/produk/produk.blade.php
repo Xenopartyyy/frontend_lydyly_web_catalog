@@ -1,80 +1,80 @@
 @extends('layout.utamadashboard')
 
 @php
-    use App\Http\Controllers\AuthController;
-    $userIsAdmin = AuthController::userIsAdmin();
+use App\Http\Controllers\AuthController;
+$userIsAdmin = AuthController::userIsAdmin();
 @endphp
 
 @section('kontendashboard')
-    <div class="min-h-screen bg-pink-100 py-10">
-        <div class="max-w-screen-2xl mx-auto bg-white rounded-lg shadow-md p-6">
-            <h1 class="text-2xl font-bold text-center text-pink-700 mb-6">Data Produk</h1>
+<div class="min-h-screen bg-pink-100 py-10">
+  <div class="max-w-screen-2xl mx-auto bg-white rounded-lg shadow-md p-6">
+    <h1 class="text-2xl font-bold text-center text-pink-700 mb-6">Data Produk</h1>
 
-            <div class="w-full md:w-auto flex justify-end mb-4">
-                <span
-                    class="bg-gray-400 text-white font-semibold py-2 px-4 rounded-lg shadow whitespace-nowrap cursor-not-allowed opacity-50">
-                    Tambah Produk
-                </span>
-            </div>
-
-            <!-- Table Container -->
-            <div class="overflow-x-auto relative">
-                <!-- Custom Loading Overlay -->
-                <div id="customLoading"
-                    class="absolute inset-0 bg-white/90 backdrop-blur-sm flex items-center justify-center z-50 rounded-lg"
-                    style="display: none;">
-                    <div class="flex flex-col items-center justify-center py-8">
-                        <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-pink-500 border-solid mb-3"></div>
-                        <p class="text-pink-600 font-semibold text-sm">Sedang mengunggah data..</p>
-                    </div>
-                </div>
-
-                <table id="produkTable" class="min-w-full bg-white">
-                    <thead>
-                        <tr class="bg-pink-400 text-white">
-                            <th class="py-3 px-2 text-left w-12">No</th>
-                            <th class="py-3 px-2 text-center w-20">Aksi</th>
-                            <th class="py-3 px-2 text-center w-24">Artikel</th>
-                            <th class="py-3 px-2 text-center w-48">Nama Barang</th>
-                            <th class="py-3 px-2 text-center w-32">Kategori</th>
-                            <th class="py-3 px-2 text-center w-32">Brand</th>
-                            {{-- <th class="py-3 px-2 text-center w-64">Deskripsi</th> --}}
-                            <th class="py-3 px-2 text-center w-28">Foto</th>
-                            <th class="py-3 px-2 text-center w-20">Stok</th>
-                            @if ($userIsAdmin)
-                                <th class="py-3 px-2 text-center w-28">Harga Yuan</th>
-                                <th class="py-3 px-2 text-center w-32 whitespace-nowrap">Harga Modal</th>
-                            @endif
-                            <th class="py-3 px-2 text-center w-32 whitespace-nowrap">Harga Jual</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
+    <div class="w-full md:w-auto flex justify-end mb-4">
+      <span
+        class="bg-gray-400 text-white font-semibold py-2 px-4 rounded-lg shadow whitespace-nowrap cursor-not-allowed opacity-50">
+        Tambah Produk
+      </span>
     </div>
 
-    {{-- Modal preview image --}}
-    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50"
-        onclick="handleModalBackgroundClick(event)">
-        <div id="modalContent" class="relative bg-white rounded shadow-lg max-w-4xl max-h-[90vh] overflow-auto p-4">
-            <button onclick="closeImageModal()"
-                class="absolute top-2 right-2 text-gray-700 hover:text-red-600 text-2xl font-bold">&times;</button>
-            <img id="modalImage" src="" alt="Gambar Produk" class="max-w-full max-h-[80vh] object-contain mx-auto">
+    <!-- Table Container -->
+    <div class="overflow-x-auto relative">
+      <!-- Custom Loading Overlay -->
+      <div id="customLoading"
+        class="absolute inset-0 bg-white/90 backdrop-blur-sm flex items-center justify-center z-50 rounded-lg"
+        style="display: none;">
+        <div class="flex flex-col items-center justify-center py-8">
+          <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-pink-500 border-solid mb-3"></div>
+          <p class="text-pink-600 font-semibold text-sm">Sedang mengunggah data..</p>
         </div>
+      </div>
+
+      <table id="produkTable" class="min-w-full bg-white">
+        <thead>
+          <tr class="bg-pink-400 text-white">
+            <th class="py-3 px-2 text-left w-12">No</th>
+            <th class="py-3 px-2 text-center w-20">Aksi</th>
+            <th class="py-3 px-2 text-center w-24">Artikel</th>
+            <th class="py-3 px-2 text-center w-48">Nama Barang</th>
+            <th class="py-3 px-2 text-center w-32">Kategori</th>
+            <th class="py-3 px-2 text-center w-32">Brand</th>
+            {{-- <th class="py-3 px-2 text-center w-64">Deskripsi</th> --}}
+            <th class="py-3 px-2 text-center w-28">Foto</th>
+            <th class="py-3 px-2 text-center w-20">Stok</th>
+            @if ($userIsAdmin)
+            <th class="py-3 px-2 text-center w-28">Harga Yuan</th>
+            <th class="py-3 px-2 text-center w-32 whitespace-nowrap">Harga Modal</th>
+            @endif
+            <th class="py-3 px-2 text-center w-32 whitespace-nowrap">Harga Jual</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
+  </div>
+</div>
 
-    <link rel="stylesheet" href="{{ asset('public/css/datatables.min.css') }}">
-    <script src="{{ asset('public/js/jquery-3.7.1.min.js') }}"></script>
-    <script src="{{ asset('public/js/datatables.min.js') }}"></script>
+{{-- Modal preview image --}}
+<div id="imageModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50"
+  onclick="handleModalBackgroundClick(event)">
+  <div id="modalContent" class="relative bg-white rounded shadow-lg max-w-4xl max-h-[90vh] overflow-auto p-4">
+    <button onclick="closeImageModal()"
+      class="absolute top-2 right-2 text-gray-700 hover:text-red-600 text-2xl font-bold">&times;</button>
+    <img id="modalImage" src="" alt="Gambar Produk" class="max-w-full max-h-[80vh] object-contain mx-auto">
+  </div>
+</div>
 
-    {{-- Inject variable Blade ke JS --}}
-    <script>
-        var userIsAdmin = @json($userIsAdmin);
-    </script>
+<link rel="stylesheet" href="{{ asset('public/css/datatables.min.css') }}">
+<script src="{{ asset('public/js/jquery-3.7.1.min.js') }}"></script>
+<script src="{{ asset('public/js/datatables.min.js') }}"></script>
 
-    <script>
-        $(document).ready(function() {
+{{-- Inject variable Blade ke JS --}}
+<script>
+  var userIsAdmin = @json($userIsAdmin);
+</script>
+
+<script>
+  $(document).ready(function() {
             try {
                 var table = $('#produkTable').DataTable({
                     processing: false,
@@ -193,9 +193,9 @@
                                     let html = '';
                                     images.forEach(url => {
                                         html +=
-                                            `<img src="https://api.allorigins.win/raw?url=http://139.255.116.18:8813/storage/${url}"
+                                            `<img src="https://139.255.116.18:8813/storage/${url}"
                           class="w-10 h-10 object-cover rounded shadow mr-1 mb-1 inline-block cursor-pointer hover:scale-105 transition-transform"
-                          onclick="showImageModal('https://api.allorigins.win/raw?url=http://139.255.116.18:8813/storage/${url}')">`;
+                          onclick="showImageModal('https://139.255.116.18:8813/storage/${url}')">`;
                                     });
 
                                     return html || '-';
@@ -309,24 +309,24 @@
         function handleModalBackgroundClick(e) {
             if (!$('#modalContent').get(0).contains(e.target)) closeImageModal();
         }
-    </script>
+</script>
 
-    <style>
-        .dataTables_processing {
-            display: none !important;
-        }
+<style>
+  .dataTables_processing {
+    display: none !important;
+  }
 
-        #customLoading {
-            transition: opacity 0.2s ease-in-out;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            position: absolute;
-        }
+  #customLoading {
+    transition: opacity 0.2s ease-in-out;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: absolute;
+  }
 
-        .overflow-x-auto {
-            overflow-y: hidden;
-        }
-    </style>
+  .overflow-x-auto {
+    overflow-y: hidden;
+  }
+</style>
 @endsection

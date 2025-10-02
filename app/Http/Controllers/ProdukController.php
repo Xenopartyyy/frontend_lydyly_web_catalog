@@ -18,7 +18,7 @@ class ProdukController extends Controller
 
     public function __construct()
     {
-        $this->apiBaseUrl = config('app.backend_api_url', 'http://139.255.116.18:8813/api/dashboard');
+        $this->apiBaseUrl = config('app.backend_api_url', 'https://139.255.116.18:8813/api/dashboard');
     }
 
     // public function index(Request $request)
