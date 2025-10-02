@@ -15,7 +15,7 @@ class MainDashboardController extends Controller
     {
         $this->apiBaseUrl = config(
             'app.backend_api_url',
-            'https://139.255.116.18:8813/api/dashboard'
+            'http://139.255.116.18:8813/api/dashboard'
         );
     }
 
@@ -30,6 +30,8 @@ class MainDashboardController extends Controller
                 $response = Http::withHeaders([
                     'Authorization' => 'Bearer ' . $token,
                     'Accept' => 'application/json',
+                ])->withOptions([
+                    'verify'        => false
                 ])->get($apiUrl);
 
                 return $response->successful() ? $response->json() : [];

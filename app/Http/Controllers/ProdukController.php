@@ -66,6 +66,9 @@ class ProdukController extends Controller
                 $response = Http::withHeaders([
                     'Authorization' => 'Bearer ' . $token,
                     'Accept'        => 'application/json',
+
+                ])->withOptions([
+                    'verify'        => false
                 ])->get($apiurl);
 
                 if (!$response->successful()) {
@@ -132,6 +135,8 @@ class ProdukController extends Controller
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
                 'Accept' => 'application/json',
+            ])->withOptions([
+                'verify'        => false
             ])->get($apiurl);
 
             if ($response->successful()) {
@@ -160,6 +165,8 @@ class ProdukController extends Controller
             $response = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
                 'Accept' => 'application/json',
+            ])->withOptions([
+                'verify'        => false
             ])->get($apiurl);
 
             if ($response->successful()) {
@@ -192,6 +199,8 @@ class ProdukController extends Controller
             $httpClient = Http::withHeaders([
                 'Authorization' => 'Bearer ' . $token,
                 'Accept' => 'application/json',
+            ])->withOptions([
+                'verify'        => false
             ])->asMultipart();
 
             // Add deleted images info
