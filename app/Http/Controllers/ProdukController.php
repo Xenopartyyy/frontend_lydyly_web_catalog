@@ -63,9 +63,7 @@ class ProdukController extends Controller
 
             // Request ke API backend
             if ($request->ajax()) {
-                $response = Http::withOptions([
-                    'verify'        => false
-                ])->withHeaders([
+                $response = Http::withoutVerifying()->withHeaders([
                     'Authorization' => 'Bearer ' . $token,
                     'Accept'        => 'application/json',
 
@@ -132,9 +130,7 @@ class ProdukController extends Controller
             $apiurl = "{$this->apiBaseUrl}/produk/{$id}";
             $token = Session::get('access_token');
 
-            $response = Http::withOptions([
-                'verify'        => false
-            ])->withHeaders([
+            $response = Http::withoutVerifying()->withHeaders([
                 'Authorization' => 'Bearer ' . $token,
                 'Accept' => 'application/json',
             ])->get($apiurl);
@@ -162,9 +158,7 @@ class ProdukController extends Controller
             $apiurl = "{$this->apiBaseUrl}/produk/{$id}";
             $token = Session::get('access_token');
 
-            $response = Http::withOptions([
-                'verify'        => false
-            ])->withHeaders([
+            $response = Http::withoutVerifying()->withHeaders([
                 'Authorization' => 'Bearer ' . $token,
                 'Accept' => 'application/json',
             ])->get($apiurl);
@@ -196,9 +190,7 @@ class ProdukController extends Controller
                 return back()->with('error', 'Token tidak ditemukan di session');
             }
 
-            $httpClient = Http::withOptions([
-                'verify'        => false
-            ])->withHeaders([
+            $httpClient = Http::withoutVerifying()->withHeaders([
                 'Authorization' => 'Bearer ' . $token,
                 'Accept' => 'application/json',
             ])->asMultipart();

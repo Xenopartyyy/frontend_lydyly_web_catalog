@@ -15,7 +15,7 @@ class MainDashboardController extends Controller
     {
         $this->apiBaseUrl = config(
             'app.backend_api_url',
-            'http://139.255.116.18:8813/api/dashboard'
+            'https://139.255.116.18:8813/api/dashboard'
         );
     }
 
@@ -27,9 +27,7 @@ class MainDashboardController extends Controller
             $data = Cache::remember('dashboard_data', 60, function () use ($apiUrl) {
                 $token = Session::get('access_token');
 
-                $response = Http::withOptions([
-                    'verify'        => false
-                ])->withHeaders([
+                $response = Http::withoutVerifying()->withHeaders([
                     'Authorization' => 'Bearer ' . $token,
                     'Accept' => 'application/json',
                 ])->get($apiUrl);
