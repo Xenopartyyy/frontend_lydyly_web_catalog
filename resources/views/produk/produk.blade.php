@@ -7,61 +7,61 @@ $userIsAdmin = AuthController::userIsAdmin();
 
 @section('kontendashboard')
 <div class="min-h-screen bg-pink-100 py-10">
-  <div class="max-w-screen-2xl mx-auto bg-white rounded-lg shadow-md p-6">
-    <h1 class="text-2xl font-bold text-center text-pink-700 mb-6">Data Produk</h1>
+    <div class="max-w-screen-2xl mx-auto bg-white rounded-lg shadow-md p-6">
+        <h1 class="text-2xl font-bold text-center text-pink-700 mb-6">Data Produk</h1>
 
-    <div class="w-full md:w-auto flex justify-end mb-4">
-      <span
-        class="bg-gray-400 text-white font-semibold py-2 px-4 rounded-lg shadow whitespace-nowrap cursor-not-allowed opacity-50">
-        Tambah Produk
-      </span>
-    </div>
-
-    <!-- Table Container -->
-    <div class="overflow-x-auto relative">
-      <!-- Custom Loading Overlay -->
-      <div id="customLoading"
-        class="absolute inset-0 bg-white/90 backdrop-blur-sm flex items-center justify-center z-50 rounded-lg"
-        style="display: none;">
-        <div class="flex flex-col items-center justify-center py-8">
-          <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-pink-500 border-solid mb-3"></div>
-          <p class="text-pink-600 font-semibold text-sm">Sedang mengunggah data..</p>
+        <div class="w-full md:w-auto flex justify-end mb-4">
+            <span
+                class="bg-gray-400 text-white font-semibold py-2 px-4 rounded-lg shadow whitespace-nowrap cursor-not-allowed opacity-50">
+                Tambah Produk
+            </span>
         </div>
-      </div>
 
-      <table id="produkTable" class="min-w-full bg-white">
-        <thead>
-          <tr class="bg-pink-400 text-white">
-            <th class="py-3 px-2 text-left w-12">No</th>
-            <th class="py-3 px-2 text-center w-20">Aksi</th>
-            <th class="py-3 px-2 text-center w-24">Artikel</th>
-            <th class="py-3 px-2 text-center w-48">Nama Barang</th>
-            <th class="py-3 px-2 text-center w-32">Kategori</th>
-            <th class="py-3 px-2 text-center w-32">Brand</th>
-            {{-- <th class="py-3 px-2 text-center w-64">Deskripsi</th> --}}
-            <th class="py-3 px-2 text-center w-28">Foto</th>
-            <th class="py-3 px-2 text-center w-20">Stok</th>
-            @if ($userIsAdmin)
-            <th class="py-3 px-2 text-center w-28">Harga Yuan</th>
-            <th class="py-3 px-2 text-center w-32 whitespace-nowrap">Harga Modal</th>
-            @endif
-            <th class="py-3 px-2 text-center w-32 whitespace-nowrap">Harga Jual</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+        <!-- Table Container -->
+        <div class="overflow-x-auto relative">
+            <!-- Custom Loading Overlay -->
+            <div id="customLoading"
+                class="absolute inset-0 bg-white/90 backdrop-blur-sm flex items-center justify-center z-50 rounded-lg"
+                style="display: none;">
+                <div class="flex flex-col items-center justify-center py-8">
+                    <div class="animate-spin rounded-full h-12 w-12 border-t-4 border-pink-500 border-solid mb-3"></div>
+                    <p class="text-pink-600 font-semibold text-sm">Sedang mengunggah data..</p>
+                </div>
+            </div>
+
+            <table id="produkTable" class="min-w-full bg-white">
+                <thead>
+                    <tr class="bg-pink-400 text-white">
+                        <th class="py-3 px-2 text-left w-12">No</th>
+                        <th class="py-3 px-2 text-center w-20">Aksi</th>
+                        <th class="py-3 px-2 text-center w-24">Artikel</th>
+                        <th class="py-3 px-2 text-center w-48">Nama Barang</th>
+                        <th class="py-3 px-2 text-center w-32">Kategori</th>
+                        <th class="py-3 px-2 text-center w-32">Brand</th>
+                        {{-- <th class="py-3 px-2 text-center w-64">Deskripsi</th> --}}
+                        <th class="py-3 px-2 text-center w-28">Foto</th>
+                        <th class="py-3 px-2 text-center w-20">Stok</th>
+                        @if ($userIsAdmin)
+                        <th class="py-3 px-2 text-center w-28">Harga Yuan</th>
+                        <th class="py-3 px-2 text-center w-32 whitespace-nowrap">Harga Modal</th>
+                        @endif
+                        <th class="py-3 px-2 text-center w-32 whitespace-nowrap">Harga Jual</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </div>
-  </div>
 </div>
 
 {{-- Modal preview image --}}
 <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-70 hidden items-center justify-center z-50"
-  onclick="handleModalBackgroundClick(event)">
-  <div id="modalContent" class="relative bg-white rounded shadow-lg max-w-4xl max-h-[90vh] overflow-auto p-4">
-    <button onclick="closeImageModal()"
-      class="absolute top-2 right-2 text-gray-700 hover:text-red-600 text-2xl font-bold">&times;</button>
-    <img id="modalImage" src="" alt="Gambar Produk" class="max-w-full max-h-[80vh] object-contain mx-auto">
-  </div>
+    onclick="handleModalBackgroundClick(event)">
+    <div id="modalContent" class="relative bg-white rounded shadow-lg max-w-4xl max-h-[90vh] overflow-auto p-4">
+        <button onclick="closeImageModal()"
+            class="absolute top-2 right-2 text-gray-700 hover:text-red-600 text-2xl font-bold">&times;</button>
+        <img id="modalImage" src="" alt="Gambar Produk" class="max-w-full max-h-[80vh] object-contain mx-auto">
+    </div>
 </div>
 
 <link rel="stylesheet" href="{{ asset('public/css/datatables.min.css') }}">
@@ -70,11 +70,11 @@ $userIsAdmin = AuthController::userIsAdmin();
 
 {{-- Inject variable Blade ke JS --}}
 <script>
-  var userIsAdmin = @json($userIsAdmin);
+    var userIsAdmin = @json($userIsAdmin);
 </script>
 
 <script>
-  $(document).ready(function() {
+    $(document).ready(function() {
             try {
                 var table = $('#produkTable').DataTable({
                     processing: false,
@@ -106,24 +106,23 @@ $userIsAdmin = AuthController::userIsAdmin();
                             className: 'text-left'
                         },
                         {
-                            data: 'id',
-                            render: function(data) {
-                                let showUrl = "{{ url('dashboard/produk') }}/" + data;
-                                let editUrl = "{{ url('dashboard/produk') }}/" + data + "/edit";
-
-                                return `
+                        data: 'id',
+                        render: function(data) {
+                        let showUrl = "{{ url('dashboard/produk') }}/" + data;
+                        let editUrl = "{{ url('dashboard/produk') }}/" + data + "/edit";
+                        
+                        return userIsAdmin ? `
                         <div class="flex justify-center space-x-2">
                             <a href="${showUrl}" class="bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded" title="Lihat">
                                 <i class="fa-regular fa-eye"></i>
                             </a>
-                            ${userIsAdmin ? `
-                                                <a href="${editUrl}" class="bg-yellow-400 hover:bg-yellow-500 text-white py-1 px-2 rounded" title="Edit">
-                                                    <i class="fa-regular fa-pen-to-square"></i>
-                                                </a>` : ''}
-                        </div>`;
-                            },
-                            orderable: false,
-                            className: 'text-center'
+                            <a href="${editUrl}" class="bg-yellow-400 hover:bg-yellow-500 text-white py-1 px-2 rounded" title="Edit">
+                                <i class="fa-regular fa-pen-to-square"></i>
+                            </a>
+                        </div>` : '-';
+                        },
+                        orderable: false,
+                        className: 'text-center'
                         },
                         {
                             data: 'ArtNo',
@@ -312,21 +311,21 @@ $userIsAdmin = AuthController::userIsAdmin();
 </script>
 
 <style>
-  .dataTables_processing {
-    display: none !important;
-  }
+    .dataTables_processing {
+        display: none !important;
+    }
 
-  #customLoading {
-    transition: opacity 0.2s ease-in-out;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    position: absolute;
-  }
+    #customLoading {
+        transition: opacity 0.2s ease-in-out;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        position: absolute;
+    }
 
-  .overflow-x-auto {
-    overflow-y: hidden;
-  }
+    .overflow-x-auto {
+        overflow-y: hidden;
+    }
 </style>
 @endsection

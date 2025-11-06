@@ -140,7 +140,7 @@
                 $('#form').on('submit', function(e) {
                     
                     e.preventDefault();
-               
+               const form = this;
                     const url =
                         'https://139.255.116.18:8813/api/dashboard/produk/{{ $produk['id'] }}';
 
