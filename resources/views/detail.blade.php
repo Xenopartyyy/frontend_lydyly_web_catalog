@@ -95,87 +95,99 @@
                     </div>
 
                     <!-- Pricing Section -->
-                    @php
-                    $hargaList = [
-                    'Harga Jual 1' => $produk['HargaJual'],
-                    'Harga Jual 2' => $produk['HargaJual2'],
-                    'Harga Jual 3' => $produk['HargaJual3'],
-                    'Harga Jual 4' => $produk['HargaJual4'],
-                    'Harga Jual 5' => $produk['HargaJual5'],
-                    ];
-                    @endphp
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
 
-                    @foreach($hargaList as $label => $value)
-                    <div class="bg-gradient-to-b from-blue-50 to-blue-100 rounded-xl p-5 text-center border border-blue-300 shadow-sm hover:shadow-lg transition duration-200">
-                        <label class="text-xs font-semibold text-blue-700 uppercase tracking-wider block">{{ $label }}</label>
-                        <p class="text-2xl font-extrabold text-blue-900 mt-2">
-                            Rp {{ number_format($value, 0, ',', '.') }}
-                        </p>
-                    </div>
-                    @endforeach
+                        @php
+                        $hargaList = [
+                        'Harga Jual 1' => $produk['HargaJual'],
+                        'Harga Jual 2' => $produk['HargaJual2'],
+                        'Harga Jual 3' => $produk['HargaJual3'],
+                        'Harga Jual 4' => $produk['HargaJual4'],
+                        'Harga Jual 5' => $produk['HargaJual5'],
+                        ];
+                        @endphp
 
-                    <div class="bg-yellow-50 rounded-lg p-4 text-center border border-yellow-200">
-                        <label class="text-sm font-medium text-yellow-600 uppercase tracking-wide block">Harga
-                            Yuan</label>
-                        <p class="text-xl font-bold text-yellow-800 mt-2">
-                            ¥ {{ number_format((float) $produk['YUAN'], 0, ',', '.') }}
-                        </p>
-                    </div>
-                    <div class="bg-red-50 rounded-lg p-4 text-center border border-red-200">
-                        <label class="text-sm font-medium text-red-600 uppercase tracking-wide block">Harga
-                            Beli</label>
-                        <p class="text-xl font-bold text-red-800 mt-2">
-                            Rp {{ number_format($produk['HargaBeli'], 0, ',', '.') }}
-                        </p>
-                    </div>
-                </div>
 
-                <!-- Stock Information -->
-                <div class="bg-green-50 rounded-lg p-4 border border-green-200">
-                    <label class="text-sm font-medium text-green-600 uppercase tracking-wide block mb-3">Stok
-                        Tersedia</label>
-                    <div class="flex items-center justify-between bg-white rounded-lg p-4 border border-green-300">
-                        <span class="text-2xl font-bold text-green-800">{{ number_format($produk['StockAkhir'], 0,
-                                ',', '.') }}</span>
-                        <div class="text-right">
-                            <p class="text-sm text-green-600">Unit</p>
-                            <p class="text-xs text-gray-500">Update terakhir: {{ now()->format('d/m/Y H:i') }}</p>
+                        @foreach($hargaList as $label => $value)
+                        <div
+                            class="bg-gradient-to-b from-blue-50 to-blue-100 rounded-xl p-5 text-center border border-blue-300 shadow-sm hover:shadow-lg transition duration-200">
+                            <label class="text-xs font-semibold text-blue-700 uppercase tracking-wider block">{{ $label
+                                }}</label>
+                            <p class="text-2xl font-extrabold text-blue-900 mt-2">
+                                Rp {{ number_format($value, 0, ',', '.') }}
+                            </p>
+                        </div>
+                        @endforeach
+
+
+                        <!-- Harga Yuan -->
+                        <div
+                            class="bg-gradient-to-b from-yellow-50 to-yellow-100 rounded-xl p-5 text-center border border-yellow-300 shadow-sm hover:shadow-lg transition duration-200">
+                            <label class="text-xs font-semibold text-yellow-700 uppercase tracking-wider block">Harga
+                                Yuan</label>
+                            <p class="text-2xl font-extrabold text-yellow-900 mt-2">
+                                ¥ {{ number_format((float) $produk['YUAN'], 0, ',', '.') }}
+                            </p>
+                        </div>
+
+
+                        <!-- Harga Beli -->
+                        <div
+                            class="bg-gradient-to-b from-red-50 to-red-100 rounded-xl p-5 text-center border border-red-300 shadow-sm hover:shadow-lg transition duration-200">
+                            <label class="text-xs font-semibold text-red-700 uppercase tracking-wider block">Harga
+                                Beli</label>
+                            <p class="text-2xl font-extrabold text-red-900 mt-2">
+                                Rp {{ number_format($produk['HargaBeli'], 0, ',', '.') }}
+                            </p>
                         </div>
                     </div>
-                </div>
 
-                <!-- Additional Info -->
-                <div class="grid grid-cols-2 gap-4">
-                    @if($produk['Jenis'])
-                    <div class="bg-gray-50 rounded-lg p-4">
-                        <label class="text-sm font-medium text-gray-500 uppercase tracking-wide block">Jenis</label>
-                        <p class="text-lg font-semibold text-gray-900 mt-1">{{ $produk['Jenis'] }}</p>
+                    <!-- Stock Information -->
+                    <div class="bg-green-50 rounded-lg p-4 border border-green-200">
+                        <label class="text-sm font-medium text-green-600 uppercase tracking-wide block mb-3">Stok
+                            Tersedia</label>
+                        <div class="flex items-center justify-between bg-white rounded-lg p-4 border border-green-300">
+                            <span class="text-2xl font-bold text-green-800">{{ number_format($produk['StockAkhir'], 0,
+                                ',', '.') }}</span>
+                            <div class="text-right">
+                                <p class="text-sm text-green-600">Unit</p>
+                                <p class="text-xs text-gray-500">Update terakhir: {{ now()->format('d/m/Y H:i') }}</p>
+                            </div>
+                        </div>
                     </div>
-                    @endif
-                    @if($produk['Merek'])
-                    <div class="bg-gray-50 rounded-lg p-4">
-                        <label class="text-sm font-medium text-gray-500 uppercase tracking-wide block">Merek</label>
-                        <p class="text-lg font-semibold text-gray-900 mt-1">{{ $produk['Merek'] }}</p>
-                    </div>
-                    @endif
-                </div>
 
-                <!-- Action Buttons -->
-                <div class="flex gap-3 pt-4">
-                    <a href="{{ url('dashboard/produk') }}"
-                        class="flex-1 bg-gray-500 hover:bg-gray-600 text-white font-medium py-3 px-6 rounded-lg transition duration-200 text-center">
-                        <i class="fas fa-arrow-left mr-2"></i>Kembali
-                    </a>
-                    <a href="{{ url('dashboard/produk/'.$produk['id'].'/edit') }}"
-                        class="flex-1 bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-lg transition duration-200 text-center">
-                        <i class="fas fa-edit mr-2"></i>Edit Produk
-                    </a>
+                    <!-- Additional Info -->
+                    <div class="grid grid-cols-2 gap-4">
+                        @if($produk['Jenis'])
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <label class="text-sm font-medium text-gray-500 uppercase tracking-wide block">Jenis</label>
+                            <p class="text-lg font-semibold text-gray-900 mt-1">{{ $produk['Jenis'] }}</p>
+                        </div>
+                        @endif
+                        @if($produk['Merek'])
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <label class="text-sm font-medium text-gray-500 uppercase tracking-wide block">Merek</label>
+                            <p class="text-lg font-semibold text-gray-900 mt-1">{{ $produk['Merek'] }}</p>
+                        </div>
+                        @endif
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex gap-3 pt-4">
+                        <a href="{{ url('dashboard/produk') }}"
+                            class="flex-1 bg-gray-500 hover:bg-gray-600 text-white font-medium py-3 px-6 rounded-lg transition duration-200 text-center">
+                            <i class="fas fa-arrow-left mr-2"></i>Kembali
+                        </a>
+                        <a href="{{ url('dashboard/produk/'.$produk['id'].'/edit') }}"
+                            class="flex-1 bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-lg transition duration-200 text-center">
+                            <i class="fas fa-edit mr-2"></i>Edit Produk
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 <!-- Enhanced Modal -->
