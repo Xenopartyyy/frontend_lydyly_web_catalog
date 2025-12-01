@@ -100,9 +100,38 @@
                             <label class="text-sm font-medium text-blue-600 uppercase tracking-wide block">Harga
                                 Jual</label>
                             <p class="text-xl font-bold text-blue-800 mt-2">
+                                Rp {{ number_format($produk['HargaJual'], 0, ',', '.') }}
+                            </p>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-4 text-center border border-blue-200">
+                            <label class="text-sm font-medium text-blue-600 uppercase tracking-wide block">Harga
+                                Jual</label>
+                            <p class="text-xl font-bold text-blue-800 mt-2">
+                                Rp {{ number_format($produk['HargaJual2'], 0, ',', '.') }}
+                            </p>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-4 text-center border border-blue-200">
+                            <label class="text-sm font-medium text-blue-600 uppercase tracking-wide block">Harga
+                                Jual</label>
+                            <p class="text-xl font-bold text-blue-800 mt-2">
+                                Rp {{ number_format($produk['HargaJual3'], 0, ',', '.') }}
+                            </p>
+                        </div>
+                         <div class="bg-blue-50 rounded-lg p-4 text-center border border-blue-200">
+                            <label class="text-sm font-medium text-blue-600 uppercase tracking-wide block">Harga
+                                Jual</label>
+                            <p class="text-xl font-bold text-blue-800 mt-2">
+                                Rp {{ number_format($produk['HargaJual4'], 0, ',', '.') }}
+                            </p>
+                        </div>
+                        <div class="bg-blue-50 rounded-lg p-4 text-center border border-blue-200">
+                            <label class="text-sm font-medium text-blue-600 uppercase tracking-wide block">Harga
+                                Jual</label>
+                            <p class="text-xl font-bold text-blue-800 mt-2">
                                 Rp {{ number_format($produk['HargaJual5'], 0, ',', '.') }}
                             </p>
                         </div>
+
                         <div class="bg-yellow-50 rounded-lg p-4 text-center border border-yellow-200">
                             <label class="text-sm font-medium text-yellow-600 uppercase tracking-wide block">Harga
                                 Yuan</label>

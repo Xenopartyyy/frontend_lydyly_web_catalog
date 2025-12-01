@@ -46,6 +46,10 @@ $userIsAdmin = AuthController::userIsAdmin();
                         <th class="py-3 px-2 text-center w-32 whitespace-nowrap">Harga Modal</th>
                         @endif
                         <th class="py-3 px-2 text-center w-32 whitespace-nowrap">Harga Jual</th>
+                        <th class="py-3 px-2 text-center w-32 whitespace-nowrap">Harga Jual 2</th>
+                        <th class="py-3 px-2 text-center w-32 whitespace-nowrap">Harga Jual 3</th>
+                        <th class="py-3 px-2 text-center w-32 whitespace-nowrap">Harga Jual 4</th>
+                        <th class="py-3 px-2 text-center w-32 whitespace-nowrap">Harga Jual 5</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -244,6 +248,58 @@ $userIsAdmin = AuthController::userIsAdmin();
                                 className: 'text-center'
                             }
                         ] : []),
+                        {
+                            data: 'HargaJual',
+                            render: function(d, type) {
+                                if (type === 'display') {
+                                    return d !== null && d !== undefined && d !== '' ?
+                                        "Rp. " + parseFloat(d).toLocaleString('id-ID') :
+                                        '-';
+                                }
+                                return d !== null && d !== undefined && d !== '' ? parseFloat(d) :
+                                    0;
+                            },
+                            className: 'text-center'
+                        },
+                        {
+                            data: 'HargaJual2',
+                            render: function(d, type) {
+                                if (type === 'display') {
+                                    return d !== null && d !== undefined && d !== '' ?
+                                        "Rp. " + parseFloat(d).toLocaleString('id-ID') :
+                                        '-';
+                                }
+                                return d !== null && d !== undefined && d !== '' ? parseFloat(d) :
+                                    0;
+                            },
+                            className: 'text-center'
+                        },
+                                                {
+                            data: 'HargaJual3',
+                            render: function(d, type) {
+                                if (type === 'display') {
+                                    return d !== null && d !== undefined && d !== '' ?
+                                        "Rp. " + parseFloat(d).toLocaleString('id-ID') :
+                                        '-';
+                                }
+                                return d !== null && d !== undefined && d !== '' ? parseFloat(d) :
+                                    0;
+                            },
+                            className: 'text-center'
+                        },
+                                                {
+                            data: 'HargaJual4',
+                            render: function(d, type) {
+                                if (type === 'display') {
+                                    return d !== null && d !== undefined && d !== '' ?
+                                        "Rp. " + parseFloat(d).toLocaleString('id-ID') :
+                                        '-';
+                                }
+                                return d !== null && d !== undefined && d !== '' ? parseFloat(d) :
+                                    0;
+                            },
+                            className: 'text-center'
+                        },
                         {
                             data: 'HargaJual5',
                             render: function(d, type) {

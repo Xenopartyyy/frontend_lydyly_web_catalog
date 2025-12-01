@@ -40,7 +40,27 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <label class="block text-sm font-medium text-gray-500">Harga Jual</label>
+                    <label class="block text-sm font-medium text-gray-500">Harga Jual 1</label>
+                    <input type="text" disabled class="mt-1 w-full rounded-lg bg-gray-100 p-2 text-gray-600"
+                        value="Rp. {{ number_format((float) $produk['HargaJual'], 0, ',', '.') }}">
+                </div>
+                                <div>
+                    <label class="block text-sm font-medium text-gray-500">Harga Jual 2</label>
+                    <input type="text" disabled class="mt-1 w-full rounded-lg bg-gray-100 p-2 text-gray-600"
+                        value="Rp. {{ number_format((float) $produk['HargaJual2'], 0, ',', '.') }}">
+                </div>
+                                <div>
+                    <label class="block text-sm font-medium text-gray-500">Harga Jual 3</label>
+                    <input type="text" disabled class="mt-1 w-full rounded-lg bg-gray-100 p-2 text-gray-600"
+                        value="Rp. {{ number_format((float) $produk['HargaJual3'], 0, ',', '.') }}">
+                </div>
+                                <div>
+                    <label class="block text-sm font-medium text-gray-500">Harga Jual 4</label>
+                    <input type="text" disabled class="mt-1 w-full rounded-lg bg-gray-100 p-2 text-gray-600"
+                        value="Rp. {{ number_format((float) $produk['HargaJual4'], 0, ',', '.') }}">
+                </div>
+                                <div>
+                    <label class="block text-sm font-medium text-gray-500">Harga Jual 5</label>
                     <input type="text" disabled class="mt-1 w-full rounded-lg bg-gray-100 p-2 text-gray-600"
                         value="Rp. {{ number_format((float) $produk['HargaJual5'], 0, ',', '.') }}">
                 </div>
