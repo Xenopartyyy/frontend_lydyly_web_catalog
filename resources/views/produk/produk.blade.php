@@ -41,6 +41,7 @@ $userIsAdmin = AuthController::userIsAdmin();
                         {{-- <th class="py-3 px-2 text-center w-64">Deskripsi</th> --}}
                         <th class="py-3 px-2 text-center w-28">Foto</th>
                         <th class="py-3 px-2 text-center w-20">Stok</th>
+                        <th class="py-3 px-2 text-center w-20">Stok CME</th>
                         @if ($userIsAdmin)
                         <th class="py-3 px-2 text-center w-28">Harga Yuan</th>
                         <th class="py-3 px-2 text-center w-32 whitespace-nowrap">Harga Modal</th>
@@ -217,6 +218,17 @@ $userIsAdmin = AuthController::userIsAdmin();
                                 }
                                 return d !== null && d !== undefined && d !== '' ? parseFloat(d) :
                                     0;
+                            },
+                            className: 'text-center'
+                        },
+                        {
+                            data: 'StockCME',
+                            render: function(d, type) {
+                            if (type === 'display') {
+                            return d !== null && d !== undefined && d !== '' ?
+                            parseFloat(d).toLocaleString('id-ID') : '-';
+                            }
+                            return d !== null && d !== undefined && d !== '' ? parseFloat(d) : 0;
                             },
                             className: 'text-center'
                         },
