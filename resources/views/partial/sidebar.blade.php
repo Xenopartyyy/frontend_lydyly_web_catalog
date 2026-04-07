@@ -38,6 +38,14 @@
         </a>
       </div>
 
+      <div class="relative">
+        <a href="{{ route('report.penjualan-periode') }}"
+          class="flex items-center w-full px-4 py-3 text-white hover:bg-gray-700 hover:text-white rounded transition">
+          <i class="fa-regular fa-clipboard"></i>
+          <p class="ml-2">Penjualan Per Periode</p>
+        </a>
+      </div>
+
 
     </nav>
 

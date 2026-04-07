@@ -31,6 +31,10 @@ class AuthController extends Controller
             ])->post('https://139.255.116.18:8813/api/login', [
                 'name' => $request->name,
                 'password' => $request->password,
+
+                // ])->post('http://127.0.0.1:8000/api/login', [
+                //     'name' => $request->name,
+                //     'password' => $request->password,
             ]);
             // dd($response);
             if ($response->successful()) {

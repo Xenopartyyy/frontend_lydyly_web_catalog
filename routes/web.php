@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\ReportPenjualanController;
 // use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\MainDashboardController;
 
@@ -42,5 +43,9 @@ Route::middleware('auth.token')->group(function () {
         Route::post('produk/{id}', [ProdukController::class, 'update'])->name('produk.update');
         Route::get('produk/{id}', [ProdukController::class, 'show'])->name('produk.show');
         Route::delete('produk/{id}', [ProdukController::class, 'destroy'])->name('produk.destroy');
+        Route::get('report/penjualan-periode', [ReportPenjualanController::class, 'index'])
+            ->name('report.penjualan-periode');
+        Route::get('report/penjualan-periode/data', [ReportPenjualanController::class, 'getData'])
+            ->name('report.penjualan-periode.data');
     });
 });
