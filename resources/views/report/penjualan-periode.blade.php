@@ -217,6 +217,7 @@
                     <th class="px-3 py-3 text-left">Barcode</th>
                     <th class="px-3 py-3 text-left">Artikel</th>
                     <th class="px-3 py-3 text-left">Pemasok</th>
+                    <th class="px-3 py-3 text-left">Grup Supplier</th>
                     <th class="px-3 py-3 text-left">Satuan</th>
                     <th class="px-3 py-3 text-right">Jan</th>
                     <th class="px-3 py-3 text-right">Feb</th>
@@ -348,6 +349,7 @@
                 { data: 'barcode',  defaultContent: '-', className: 'px-3 py-2' },
                 { data: 'ArtNo',    defaultContent: '-', className: 'px-3 py-2' },
                 { data: 'Pemasok',  defaultContent: '-', className: 'px-3 py-2' },
+                { data: 'GrupSupplier',  defaultContent: '-', className: 'px-3 py-2' },
                 { data: 'Satuan',   defaultContent: '-', className: 'px-3 py-2' },
                 { data: 'Januari',   defaultContent: 0, type: 'num', className: 'px-3 py-2 text-right', render: (v, t) => t === 'display' ? formatNumber(v) : parseFloat(v) || 0 },
                 { data: 'Februari',  defaultContent: 0, type: 'num', className: 'px-3 py-2 text-right', render: (v, t) => t === 'display' ? formatNumber(v) : parseFloat(v) || 0 },
@@ -440,13 +442,13 @@
     function exportExcel() {
         if (!tableData.length) { alert('Tidak ada data untuk diekspor.'); return; }
 
-        const ws_data = [['No','Barcode','Artikel','Pemasok','Satuan',
+        const ws_data = [['No','Barcode','Artikel','Pemasok','GrupSupplier', 'Satuan',
             'Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agt','Sep','Okt','Nov','Des',
             'Total Jual','Rata Jual','Stok Akhir']];
 
         tableData.forEach((row, i) => {
             ws_data.push([
-                i + 1, row.barcode, row.ArtNo, row.Pemasok, row.Satuan,
+                i + 1, row.barcode, row.ArtNo, row.Pemasok, row.GrupSupplier, row.Satuan,
                 row.Januari, row.Februari, row.Maret, row.April, row.Mei,
                 row.Juni, row.Juli, row.Agustus, row.September, row.Oktober,
                 row.November, row.Desember, row.TotalPenjualan, row.RataJual,
