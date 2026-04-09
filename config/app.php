@@ -134,9 +134,12 @@ return [
     |
     */
 
-    'backend_api_url' => env('BACKEND_API_URL', 'https://139.255.116.18:8813/api/dashboard'),
+    // 'backend_api_url' => env('BACKEND_API_URL', 'https://139.255.116.18:8813/api/dashboard'),
 
-    // 'backend_api_url' => env('BACKEND_API_URL', 'http://127.0.0.1:8000/api/dashboard'),
+    'backend_api_url' => env('BACKEND_API_URL', 'http://127.0.0.1:8000/api/dashboard'),
+    'backend_auth_url' => env('BACKEND_AUTH_URL', 'http://127.0.0.1:8000/api'),
+    'backend_storage_url' => env('BACKEND_STORAGE_URL', 'http://127.0.0.1:8000/api'),
+
 
 
 ];

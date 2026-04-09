@@ -76,6 +76,22 @@ $userIsAdmin = AuthController::userIsAdmin();
 {{-- Inject variable Blade ke JS --}}
 <script>
     var userIsAdmin = @json($userIsAdmin);
+    @if(str_contains(config('app.backend_storage_url'), '127.0.0.1'))
+        var imgBase = "{{ config('app.backend_storage_url') }}";
+    @else
+        var imgBase = "https://images.weserv.nl/?url={{ config('app.backend_storage_url') }}";
+    @endif
+</script>
+
+<script>
+    var userIsAdmin = @json($userIsAdmin);
+    @if(str_contains(config('app.backend_storage_url'), '127.0.0.1'))
+        var imgBase = "{{ config('app.backend_storage_url') }}";
+    @else
+        var imgBase = "https://images.weserv.nl/?url={{ config('app.backend_storage_url') }}";
+    @endif
+    
+    console.log('imgBase:', imgBase); // tambah ini sementara
 </script>
 
 <script>
@@ -196,10 +212,9 @@ $userIsAdmin = AuthController::userIsAdmin();
 
                                     let html = '';
                                     images.forEach(url => {
-                                        html +=
-                                            `<img src="https://images.weserv.nl/?url=https://139.255.116.18:8813/storage/${url}"
-                          class="w-10 h-10 object-cover rounded shadow mr-1 mb-1 inline-block cursor-pointer hover:scale-105 transition-transform"
-                          onclick="showImageModal('https://images.weserv.nl/?url=https://139.255.116.18:8813/storage/${url}')">`;
+                                       html += `<img src="${imgBase}/storage/${url}"
+                                        class="w-10 h-10 object-cover rounded shadow mr-1 mb-1 inline-block cursor-pointer hover:scale-105 transition-transform"
+                                        onclick="showImageModal('${imgBase}/storage/${url}')">`;
                                     });
 
                                     return html || '-';

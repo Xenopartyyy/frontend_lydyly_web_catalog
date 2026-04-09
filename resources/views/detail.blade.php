@@ -23,11 +23,15 @@
                                 $imageUrl = $image; // sudah full URL dari API
                                 @endphp
                                 <div class="w-full flex-shrink-0 relative">
-                                    <img src="https://images.weserv.nl/?url=https://139.255.116.18:8813/storage/{{ $imageUrl }}"
-                                        alt="{{ $produk['NamaStock'] }}"
+                                    <img @if(str_contains(config('app.backend_storage_url'), '127.0.0.1' ))
+                                        src="{{ config('app.backend_storage_url') }}/storage/{{ $imageUrl }}"
+                                        onclick="openModal('{{ config('app.backend_storage_url') }}/storage/{{ $imageUrl }}')"
+                                        @else
+                                        src="https://images.weserv.nl/?url={{ config('app.backend_storage_url') }}/storage/{{ $imageUrl }}"
+                                        onclick="openModal('https://images.weserv.nl/?url={{ config('app.backend_storage_url') }}/storage/{{ $imageUrl }}')"
+                                        @endif alt="{{ $produk['NamaStock'] }}"
                                         class="w-full h-96 object-contain cursor-pointer hover:scale-105 transition-transform duration-300"
-                                        onclick="openModal('{{ $imageUrl }}')"
-                                        onerror="this.onerror=null; this.src='{{ asset('public/images/no-image.png') }}'; console.log('Image failed to load:', '{{ $imageUrl }}')">
+                                        onerror="this.onerror=null; this.src='{{ asset('public/images/no-image.png') }}';">
                                 </div>
                                 @endforeach
                             </div>
@@ -63,9 +67,11 @@
                             class="thumbnail-btn flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all duration-200 
                                         {{ $index === 0 ? 'border-green-500' : 'border-gray-200 hover:border-green-300' }}"
                             data-index="{{ $index }}" onclick="goToSlide({{ $index }})">
-                            <img src="https://images.weserv.nl/?url=https://139.255.116.18:8813/storage/{{ $thumbUrl }}"
-                                alt="Thumbnail {{ $index + 1 }}" class="w-full h-full object-cover"
-                                onerror="this.onerror=null; this.src='{{ asset('public/images/no-image.png') }}'; console.log('Thumbnail failed to load:', '{{ $thumbUrl }}')">
+                            <img @if(str_contains(config('app.backend_storage_url'), '127.0.0.1' ))
+                                src="{{ config('app.backend_storage_url') }}/storage/{{ $thumbUrl }}" @else
+                                src="https://images.weserv.nl/?url={{ config('app.backend_storage_url') }}/storage/{{ $thumbUrl }}"
+                                @endif alt="Thumbnail {{ $index + 1 }}" class="w-full h-full object-cover"
+                                onerror="this.onerror=null; this.src='{{ asset('public/images/no-image.png') }}';">
                         </button>
                         @endforeach
                     </div>

@@ -44,22 +44,22 @@
                     <input type="text" disabled class="mt-1 w-full rounded-lg bg-gray-100 p-2 text-gray-600"
                         value="Rp. {{ number_format((float) $produk['HargaJual'], 0, ',', '.') }}">
                 </div>
-                                <div>
+                <div>
                     <label class="block text-sm font-medium text-gray-500">Harga Jual 2</label>
                     <input type="text" disabled class="mt-1 w-full rounded-lg bg-gray-100 p-2 text-gray-600"
                         value="Rp. {{ number_format((float) $produk['HargaJual2'], 0, ',', '.') }}">
                 </div>
-                                <div>
+                <div>
                     <label class="block text-sm font-medium text-gray-500">Harga Jual 3</label>
                     <input type="text" disabled class="mt-1 w-full rounded-lg bg-gray-100 p-2 text-gray-600"
                         value="Rp. {{ number_format((float) $produk['HargaJual3'], 0, ',', '.') }}">
                 </div>
-                                <div>
+                <div>
                     <label class="block text-sm font-medium text-gray-500">Harga Jual 4</label>
                     <input type="text" disabled class="mt-1 w-full rounded-lg bg-gray-100 p-2 text-gray-600"
                         value="Rp. {{ number_format((float) $produk['HargaJual4'], 0, ',', '.') }}">
                 </div>
-                                <div>
+                <div>
                     <label class="block text-sm font-medium text-gray-500">Harga Jual 5</label>
                     <input type="text" disabled class="mt-1 w-full rounded-lg bg-gray-100 p-2 text-gray-600"
                         value="Rp. {{ number_format((float) $produk['HargaJual5'], 0, ',', '.') }}">
@@ -101,9 +101,11 @@
             @if (!empty($images))
             @foreach ($images as $index => $foto)
             <div class="flex items-center space-x-4">
-                <img src="https://images.weserv.nl/?url=https://139.255.116.18:8813/storage/{{ $foto }}" alt="Gambar {{ $index + 1 }}"
-                    class="w-24 h-24 object-cover border rounded-lg"
-                    onerror="this.onerror=null; this.src='{{ asset('images/no-image.png') }}'; console.log('Image failed:', '{{ $foto }}');">
+                <img @if(str_contains(config('app.backend_storage_url'), '127.0.0.1' ))
+                    src="{{ config('app.backend_storage_url') }}/storage/{{ $foto }}" @else
+                    src="https://images.weserv.nl/?url={{ config('app.backend_storage_url') }}/storage/{{ $foto }}"
+                    @endif alt="Gambar {{ $index + 1 }}" class="w-24 h-24 object-cover border rounded-lg"
+                    onerror="this.onerror=null; this.src='{{ asset('images/no-image.png') }}';">
                 <input type="hidden" name="existing_images[]" value="{{ $foto }}">
                 <label class="flex items-center space-x-2">
                     <input type="checkbox" name="deleted_images[]" value="{{ $foto }}"
@@ -162,7 +164,7 @@
                     e.preventDefault();
                const form = this;
                     const url =
-                        'https://139.255.116.18:8813/api/dashboard/produk/{{ $produk['id'] }}';
+                        "{{ config('app.backend_api_url') }}/produk/{{ $produk['id'] }}";
 
                     console.log('URL yang dipanggil:', url); // Debug URL
 
