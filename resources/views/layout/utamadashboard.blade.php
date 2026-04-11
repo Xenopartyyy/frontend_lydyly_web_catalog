@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Dashboard Lydyly</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('public/favicon/favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon/favicon.ico') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,9 +15,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/ca4cafcf9e.js" crossorigin="anonymous"></script>
     @vite('resources/css/app.css')
-    <link rel="stylesheet" href={{ asset('public/css/datatables.min.css') }}>
+    <link rel="stylesheet" href={{ asset('css/datatables.min.css') }}>
     <!-- Add this to your layout file -->
-    @notifyCss
     @stack('styles')
 </head>
 
@@ -30,8 +29,6 @@
     <div class="flex-grow p-6 bg-pink-100">
 
         <!-- Dashboard Content -->
-        @include('notify::components.notify')
-        @notifyJs
         @yield('kontendashboard')
     </div>
     <style>
@@ -43,8 +40,8 @@
         }
     </style>
 
-    <script src="{{ asset('public/js/jquery-3.7.1.min.js') }}"></script>
-    <script src="{{ asset('public/js/datatables.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.7.1.min.js') }}"></script>
+    <script src="{{ asset('js/datatables.min.js') }}"></script>
     <script>
         let token = "{{ session('access_token') }}";
 

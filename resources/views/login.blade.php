@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login - Lidily Catalog System</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('public/favicon/favicon.ico') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon/favicon.ico') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
@@ -413,7 +413,7 @@
         <div class="info-panel">
 
             <div class="info-main">
-                <img src=" {{ asset('public/storage/photos/ldlynobgnew.png') }}"
+                <img src=" {{ asset('storage/photos/ldlynobgnew.png') }}"
                     style="width:300px;margin-bottom:24px;opacity:0.95;">
             </div>
         </div>
